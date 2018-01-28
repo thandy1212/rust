@@ -686,8 +686,8 @@ impl<'a> Builder<'a> {
             }
 
             if self.config.rust_codegen_units.is_none() &&
-               self.build.is_rust_llvm(compiler.host)
-            {
+               self.build.is_rust_llvm(compiler.host) &&
+               self.config.rust_thinlto {
                 cargo.env("RUSTC_THINLTO", "1");
             }
         }
